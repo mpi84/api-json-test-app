@@ -101,6 +101,8 @@ class Client implements EntityInterface
             'id' => $this->getId(),
             'email' => $this->getEmail(),
             'managerId' => $this->getManager()?->getId(),
+            'createdAt' => $this->getFormattedCreatedAt(),
+            'updatedAt' => $this->getFormattedUpdatedAt(),
         ];
     }
 }

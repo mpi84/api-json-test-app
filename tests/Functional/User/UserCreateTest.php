@@ -58,7 +58,9 @@ class UserCreateTest extends ApiTestCase
         $response = $this->getDataFromResponse(self::$client->getResponse());
         self::assertNull($response['error']);
         self::assertIsArray($response['result']);
-        self::assertCount(3, $response['result']);
+        self::assertCount(5, $response['result']);
+        self::assertArrayHasKey('createdAt', $response['result']);
+        self::assertArrayHasKey('updatedAt', $response['result']);
         self::assertEquals('test@test.local', $response['result']['email']);
     }
 

@@ -47,4 +47,14 @@ trait TimestampableEntityHelper
     {
         $this->updatedAt = $updatedAt;
     }
+
+    public function getFormattedCreatedAt(): string
+    {
+        return $this->createdAt->format('d.m.Y H:i:s');
+    }
+
+    public function getFormattedUpdatedAt(): string
+    {
+        return $this->createdAt->format('d.m.Y H:i:s');
+    }
 }

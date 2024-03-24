@@ -94,6 +94,8 @@ class Account implements EntityInterface
             'client' => $this->getClient()->getId(),
             'currency' => $this->getCurrency(),
             'amount' => $this->getAmount(),
+            'createdAt' => $this->getFormattedCreatedAt(),
+            'updatedAt' => $this->getFormattedUpdatedAt(),
         ];
     }
 }

@@ -60,7 +60,9 @@ class UserUpdateTest extends ApiTestCase
         self::assertResponseStatusCodeSame(200);
         $response = $this->getDataFromResponse(self::$client->getResponse());
         self::assertIsArray($response['result']);
-        self::assertCount(3, $response['result']);
+        self::assertCount(5, $response['result']);
+        self::assertArrayHasKey('createdAt', $response['result']);
+        self::assertArrayHasKey('updatedAt', $response['result']);
         self::assertEquals('test1@test.local', $response['result']['email']);
         self::assertNull($response['error']);
     }

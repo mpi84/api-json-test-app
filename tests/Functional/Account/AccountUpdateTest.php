@@ -61,7 +61,9 @@ class AccountUpdateTest extends ApiTestCase
         self::assertResponseStatusCodeSame(200);
         $response = $this->getDataFromResponse(self::$client->getResponse());
         self::assertIsArray($response['result']);
-        self::assertCount(4, $response['result']);
+        self::assertCount(6, $response['result']);
+        self::assertArrayHasKey('createdAt', $response['result']);
+        self::assertArrayHasKey('updatedAt', $response['result']);
         self::assertEquals(100, $response['result']['amount']);
         self::assertNull($response['error']);
     }
@@ -92,7 +94,9 @@ class AccountUpdateTest extends ApiTestCase
         self::assertResponseStatusCodeSame(200);
         $response = $this->getDataFromResponse(self::$client->getResponse());
         self::assertIsArray($response['result']);
-        self::assertCount(4, $response['result']);
+        self::assertCount(6, $response['result']);
+        self::assertArrayHasKey('createdAt', $response['result']);
+        self::assertArrayHasKey('updatedAt', $response['result']);
         self::assertEquals(100, $response['result']['amount']);
         self::assertEquals('usd', $response['result']['currency']);
         self::assertNull($response['error']);

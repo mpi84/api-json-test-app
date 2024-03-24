@@ -27,6 +27,7 @@ class UserInfoTest extends ApiTestCase
         self::assertNull($response['error']);
         self::assertIsArray($response['result']);
         self::assertCount(4, $response['result']);
+        self::assertCount(5, $response['result'][0]);
     }
 
         public function testUserInfoByAdminOneUserById(): void
@@ -38,7 +39,9 @@ class UserInfoTest extends ApiTestCase
         $response = $this->getDataFromResponse(self::$client->getResponse());
         self::assertNull($response['error']);
         self::assertIsArray($response['result']);
-        self::assertCount(3, $response['result']);
+        self::assertCount(5, $response['result']);
+        self::assertArrayHasKey('createdAt', $response['result']);
+        self::assertArrayHasKey('updatedAt', $response['result']);
         self::assertEquals(1, $response['result']['id']);
     }
 

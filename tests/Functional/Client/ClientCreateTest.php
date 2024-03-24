@@ -55,7 +55,9 @@ class ClientCreateTest extends ApiTestCase
         $response = $this->getDataFromResponse(self::$client->getResponse());
         self::assertNull($response['error']);
         self::assertIsArray($response['result']);
-        self::assertCount(3, $response['result']);
+        self::assertCount(5, $response['result']);
+        self::assertArrayHasKey('createdAt', $response['result']);
+        self::assertArrayHasKey('updatedAt', $response['result']);
         self::assertEquals('test-client@test.local', $response['result']['email']);
     }
 
@@ -69,7 +71,9 @@ class ClientCreateTest extends ApiTestCase
         self::assertResponseStatusCodeSame(200);
         $response = $this->getDataFromResponse(self::$client->getResponse());
         self::assertIsArray($response['result']);
-        self::assertCount(3, $response['result']);
+        self::assertCount(5, $response['result']);
+        self::assertArrayHasKey('createdAt', $response['result']);
+        self::assertArrayHasKey('updatedAt', $response['result']);
         self::assertEquals(2, $response['result']['managerId']);
         self::assertEquals('test-client-2@test.local', $response['result']['email']);
         self::assertNull($response['error']);

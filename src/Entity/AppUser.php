@@ -106,6 +106,8 @@ class AppUser implements UserInterface, PasswordAuthenticatedUserInterface, Enti
             'id' => $this->getId(),
             'email' => $this->getEmail(),
             'roles' => $this->getRoles(),
+            'createdAt' => $this->getFormattedCreatedAt(),
+            'updatedAt' => $this->getFormattedUpdatedAt(),
         ];
     }
 

@@ -68,7 +68,7 @@ class AppUserRepository extends ServiceEntityRepository implements PasswordUpgra
         return $this
             ->getEntityManager()
             ->createNativeQuery($this->getNativeSqlForFindAllUsersByManager(), $rsm)
-            ->getArrayResult()
+            ->getResult()
         ;
     }
 
@@ -97,7 +97,7 @@ class AppUserRepository extends ServiceEntityRepository implements PasswordUpgra
 //MYSQL;
 
         return <<<PGSQL
-SELECT u.id, u.email, u.roles
+SELECT u.*
 FROM app_user u
 WHERE (u.roles)::jsonb ?? '{$this->getManagerRole()}' AND u.id = :userId
 PGSQL;
@@ -112,7 +112,7 @@ PGSQL;
 //ORDER BY u.id
 //MYSQL;
         return <<<PGSQL
-SELECT u.id, u.email, u.roles
+SELECT u.*
 FROM app_user u
 WHERE (u.roles)::jsonb ?? '{$this->getManagerRole()}'
 ORDER BY u.id
