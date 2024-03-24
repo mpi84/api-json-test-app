@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Helpers\TimestampableEntityHelper;
 use App\Repository\AccountRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -12,8 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\UniqueConstraint(
     columns: ['client_id', 'currency']
 )]
+#[ORM\HasLifecycleCallbacks]
 class Account implements EntityInterface
 {
+    use TimestampableEntityHelper;
+
     public const CURRENCY_USD = 'usd';
     public const CURRENCY_EUR = 'eur';
     public const CURRENCY_RUB = 'rub';

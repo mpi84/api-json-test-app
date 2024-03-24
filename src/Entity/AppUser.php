@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Helpers\TimestampableEntityHelper;
 use App\Repository\AppUserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -12,8 +13,11 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: AppUserRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class AppUser implements UserInterface, PasswordAuthenticatedUserInterface, EntityInterface
 {
+    use TimestampableEntityHelper;
+
     public const USER_ADMIN_ROLE = 'ROLE_ADMIN';
     public const USER_MANAGER_ROLE = 'ROLE_MANAGER';
 
